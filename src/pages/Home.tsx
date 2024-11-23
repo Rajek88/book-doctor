@@ -3,6 +3,7 @@ import { Link, Route, Routes, useLocation, useNavigate } from "react-router";
 import BookAppointment from "./BookAppointment";
 import ViewAppointments from "./ViewAppointments";
 import ModifyAppointment from "./ModifyAppointment";
+import ViewAppointmentsByDoctor from "./ViewAppointsByDoctor";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -28,6 +29,12 @@ const Home: React.FC = () => {
           View Appointments
         </Link>
         <Link
+          className={currentPath === "/view-doctor" ? "active" : ""}
+          to="/view-doctor"
+        >
+          View Appointments by Doctor
+        </Link>
+        <Link
           className={currentPath === "/modify" ? "active" : ""}
           to="/modify"
         >
@@ -38,6 +45,7 @@ const Home: React.FC = () => {
         <Routes>
           <Route path="/book" element={<BookAppointment />} />
           <Route path="/view" element={<ViewAppointments />} />
+          <Route path="/view-doctor" element={<ViewAppointmentsByDoctor />} />
           <Route path="/modify" element={<ModifyAppointment />} />
         </Routes>
       </main>

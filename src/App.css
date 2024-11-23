@@ -144,6 +144,19 @@ label {
   font-weight: 600;
 }
 
+.cancel-btn {
+  padding: 8px 14px;
+  background-color: rgb(199, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: small;
+}
+
+.cancel-btn:hover {
+  background-color: red;
+}
+
 /* Responsive Layout */
 @media (max-width: 768px) {
   nav {

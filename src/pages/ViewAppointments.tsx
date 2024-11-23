@@ -18,9 +18,28 @@ const ViewAppointments: React.FC = () => {
     }
   };
 
+  // Cancel an appointment
+  const cancelAppointment = async (email: string, timeSlot: string) => {
+    if (!email || !timeSlot) {
+      alert("Invalid appointment details");
+      return;
+    }
+    try {
+      await api.delete(`/`, { data: { email, timeSlot } });
+      setAppointments((prev) =>
+        prev.filter(
+          (appointment) =>
+            !(appointment.email === email && appointment.timeSlot === timeSlot)
+        )
+      );
+    } catch (err) {
+      alert("Failed to cancel appointment. Please try again.");
+    }
+  };
+
   return (
     <div className="view-appointments">
-      <h2 className="page-title">View Appointment</h2>
+      <h2 className="page-title">View Your Appointment</h2>
       <form>
         <input
           type="email"
@@ -44,6 +63,14 @@ const ViewAppointments: React.FC = () => {
             <strong>Patient:</strong> {appointment.firstName}{" "}
             {appointment.lastName}
           </p>
+          <button
+            className="cancel-btn"
+            onClick={() =>
+              cancelAppointment(appointment.email, appointment.timeSlot)
+            }
+          >
+            Cancel Appointment
+          </button>
         </div>
       ))}
     </div>
