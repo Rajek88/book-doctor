@@ -12,7 +12,7 @@ const ViewAppointments: React.FC = () => {
     }
     try {
       const response = await api.get(`/${email}`);
-      setAppointments(response.data);
+      setAppointments(response.data.allAppointments);
     } catch (error: any) {
       alert(error.response?.data?.error || "Error fetching appointment");
     }

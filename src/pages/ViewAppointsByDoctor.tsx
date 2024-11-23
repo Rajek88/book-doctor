@@ -25,7 +25,7 @@ const ViewAppointmentsByDoctor: React.FC = () => {
     setError("");
     try {
       const response = await api.get(`/doctor/${doctorName}`);
-      setAppointments(response.data);
+      setAppointments(response.data.allAppointments);
     } catch (err) {
       setError("Failed to fetch appointments. Please try again.");
     } finally {
