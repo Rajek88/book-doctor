@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import { Link, Route, Routes, useNavigate } from "react-router";
+import { Link, Route, Routes, useLocation, useNavigate } from "react-router";
 import BookAppointment from "./BookAppointment";
 import ViewAppointments from "./ViewAppointments";
 import ModifyAppointment from "./ModifyAppointment";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const currentPath = location.pathname;
+  const location = useLocation();
+  const { pathname: currentPath } = location;
+  //   console.log({ currentPath });
 
   useEffect(() => {
     navigate("/book");
